@@ -1,0 +1,5 @@
+displayName = Simple Crops
+author = John Clout
+version = 1.0
+homepage = 
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*

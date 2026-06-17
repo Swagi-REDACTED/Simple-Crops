@@ -1,0 +1,1 @@
+A simple mod that allows Waterleaf to bloom in water and Fireblossom to bloom around lava, featuring a customizable configuration.

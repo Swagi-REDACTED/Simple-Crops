@@ -1,0 +1,65 @@
+Configs: {
+	SimpleCropsConfig: {
+		DisplayName: Simple Crops Config
+
+		EnableWaterleafWaterBloom: {
+			Label: Enable Waterleaf Water Bloom
+			Tooltip: If enabled, Waterleaf will bloom when submerged in water.
+		}
+
+		EnableFireblossomLavaBloom: {
+			Label: Enable Fireblossom Lava Bloom
+			Tooltip: If enabled, Fireblossom will bloom when submerged in lava or if lava is within a 1 block radius.
+		}
+
+		LavaDestroysFireblossom: {
+			Label: Lava Destroys Fireblossom
+			Tooltip:
+				'''
+				If true, pouring lava directly onto the leaves will incinerate it (vanilla behavior), but putting it in the planter is safe.
+				If false, it will be completely immune to lava.
+				'''
+		}
+
+		WaterleafRequiresSubmergence: {
+			Label: Waterleaf Requires Submergence
+			Tooltip:
+				'''
+				If enabled, Waterleaf will only bloom if water is directly on the plant or in its planter block.
+				If disabled, a generous 1-block radius is checked.
+				'''
+		}
+
+		FireblossomRequiresSubmergence: {
+			Label: Fireblossom Requires Submergence
+			Tooltip:
+				'''
+				If enabled, Fireblossom will only bloom if lava is directly on the plant or in its planter block.
+				If disabled, a generous 1-block radius is checked.
+				'''
+		}
+
+		ApplySubmergenceBoostToWaterleaf: {
+			Label: Apply Submergence Boost to Waterleaf
+			Tooltip:
+				'''
+				If enabled, applies a growth speed boost to Waterleaf when submerged or when water is in its planter block.
+				This replicates the vanilla rain boost, and does not stack with it.
+				'''
+		}
+
+		ApplySubmergenceBoostToFireblossom: {
+			Label: Apply Submergence Boost to Fireblossom
+			Tooltip: If enabled, applies a growth speed boost to Fireblossom when submerged or when lava is in its planter block.
+		}
+
+		RainStopsFireblossomWhenSubmerged: {
+			Label: Rain Stops Fireblossom When Submerged
+			Tooltip:
+				'''
+				If enabled, Fireblossoms submerged in lava will un-bloom when it rains, matching vanilla behavior.
+				If disabled, lava-submerged Fireblossoms will stay blooming even during rain.
+				'''
+		}
+	}
+}
