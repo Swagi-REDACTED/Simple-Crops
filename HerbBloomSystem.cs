@@ -1,5 +1,4 @@
 using System.Reflection;
-using MonoMod.RuntimeDetour;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,23 +7,14 @@ namespace SimpleCrops
 {
 	public class HerbBloomSystem : ModSystem
 	{
-		// Store an explicit Hook so we can Dispose() it in Unload().
-		// The On_ shorthand never disposes its internal Hook, causing MonoMod to
-		// hold a strong reference to our delegate even after unloading the mod.
-		private Hook _growAlchHook;
-
 		public override void Load()
 		{
-			var target = typeof(WorldGen).GetMethod(nameof(WorldGen.GrowAlch), BindingFlags.Public | BindingFlags.Static);
-			_growAlchHook = new Hook(target, Hook_GrowAlch);
+			On_WorldGen.GrowAlch += Hook_GrowAlch;
 		}
 
 		public override void Unload()
 		{
-			// Dispose explicitly — this releases MonoMod's internal strong reference
-			// to our delegate, allowing the GC to collect the mod assembly cleanly.
-			_growAlchHook?.Dispose();
-			_growAlchHook = null;
+			On_WorldGen.GrowAlch -= Hook_GrowAlch;
 		}
 
 		private bool HasLiquid(int x, int y, int liquidType, bool requireSubmergence)
@@ -54,10 +44,7 @@ namespace SimpleCrops
 			return false;
 		}
 
-		// Delegate signature for the explicit Hook — matches WorldGen.GrowAlch(int, int)
-		private delegate void orig_GrowAlch(int x, int y);
-
-		private void Hook_GrowAlch(orig_GrowAlch orig, int x, int y)
+		private void Hook_GrowAlch(On_WorldGen.orig_GrowAlch orig, int x, int y)
 		{
 			// Call the original vanilla code first (runs its own 1/50 growth roll and all other tile logic)
 			orig(x, y);
